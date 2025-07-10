@@ -15,7 +15,8 @@
   grid-template-rows: 1fr 1fr min-content;
   padding-inline: 0.625rem;
   padding-block-end: 4.125rem;
-  block-size: min(100vh, 41.75rem);
+  height: 100vh;
+  min-height: 668px;
 }
 
 .header__theme-menu {
@@ -46,7 +47,7 @@
 .header__title {
   color: var(--title-color);
   font-weight: 700;
-  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  font-size: var(--logo-size);
   line-height: 83%;
   text-shadow: 4px 4px 0 var(--accent-color);
 }
@@ -59,7 +60,7 @@
   background-color: var(--accent-color);
 }
 
-.title-decor__two-titles {
+.title-decor__separate-cards-section {
   color: var(--text-color-dark);
   font-weight: 400;
   font-size: var(--font-size);
@@ -111,7 +112,7 @@
   text-shadow: 2px 2px 0 var(--accent-color);
 }
 
-.content-section__two-titles {
+.content-section__separate-cards-section {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
@@ -138,13 +139,14 @@
   justify-content: center;
   align-items: center;
   padding: 0.625rem;
-  block-size: min(100vh, 41.75rem);
+  height: 100vh;
+  min-height: 668px;
 }
 
 .footer__title {
   color: var(--title-color);
   font-weight: 700;
-  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  font-size: var(--logo-size);
   line-height: 83%;
   text-shadow: 2px 2px 0 var(--accent-color);
 }
@@ -176,6 +178,7 @@
     grid-column: 2;
     grid-row: 3;
     padding-right: 1rem;
+    margin-inline-start: 0.7rem;
   }
 
   .main {
@@ -208,7 +211,6 @@
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: min-content repeat(3, 1fr);
     gap: 1.25rem;
-    min-block-size: 51.44rem;
     aspect-ratio: 768 / 823;
   }
 
@@ -251,6 +253,10 @@
 }
 
 @media (min-width: 1024px) {
+  :root {
+    --logo-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+  
   .header {
     grid-template-columns: 1fr 1fr;
     padding: 0;
@@ -277,7 +283,11 @@
   
   .header__title {
     padding-block-end: 4.4rem;
-    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+    font-size: var(--logo-size);
+  }
+
+  .header__text {
+    padding: 0;
   }
 
   .content-section {
@@ -286,26 +296,19 @@
 
   .visual-concentration {
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: min-content min-content;
+  }
+    
+  .visual-concentration .content-section__title {
+    grid-column: 1 / -1;
+    inline-size: min(315px);
   }
 
-  .visual-concentration .multitasking {
-    grid-column: 1 / 2;
-    align-content: start;
-  }
-
-  .visual-concentration .food {
-    grid-column: 2 / 3;
-    align-content: start;
-  }
-
-  .visual-concentration .gadgets {
-    grid-column: 3 / -1;
+  .visual-concentration .content-section__card {
+    grid-column: auto;
     align-content: start;
   }
 
   .content-section.galery {
-    min-block-size: 68.19rem;
     aspect-ratio: 1024 / 1091;
   }
 
@@ -315,14 +318,14 @@
   }
 
   .footer__title {
-    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+    font-size: var(--logo-size);
   }
 }
 
 /*стиль для нажатой кнопки*/
 
 .header__theme-menu-button_active {
-  border: 1px solid var(--content-section-title-color);
+  border: 1px solid currentColor;
   pointer-events: none;
 }
 
@@ -353,7 +356,7 @@
   inline-size: 9px;
 }
 
-.header__theme-menu::before {
+.header__title::before, .footer__title::before {
   content: "";
   position: absolute;
   top: 10px;
@@ -365,31 +368,7 @@
   inline-size: 25px;
 }
 
-.header__title::before {
-  content: "";
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  display: block;
-  height: 25px;
-  border-bottom: 1px solid var(--accent-color);
-  border-left: 1px solid var(--accent-color);
-  inline-size: 25px;
-}
-
-.footer__title::before {
-  content: "";
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  display: block;
-  height: 25px;
-  border-top: 1px solid var(--accent-color);
-  border-right: 1px solid var(--accent-color);
-  inline-size: 25px;
-}
-
-.footer__title::after {
+.header__title::after, .footer__title::after {
   content: "";
   position: absolute;
   bottom: 10px;
@@ -428,25 +407,13 @@
     right: 29px;
   }
 
-  .header__theme-menu::before {
-    top: 19px;
-    right: 20px;
-  }
-
-  .header__title::before {
-    position: absolute;
+  .header__title::after, .footer__title::after {
     bottom: 19px;
     left: 20px;
-    display: block;
   }
 
-  .footer__title::before {
+  .header__title::before, .footer__title::before {
     top: 19px;
     right: 20px;
-  }
-
-  .footer__title::after {
-    bottom: 19px;
-    left: 20px;
   }
 }

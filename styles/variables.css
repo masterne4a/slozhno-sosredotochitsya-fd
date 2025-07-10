@@ -4,7 +4,7 @@
 */
 :root {
   --cover-image-place: url(../images/cover-image-dark.png);
-  --font-family: "IBM Plex Mono", sans-serif;
+  --font-family: "IBM Plex Mono", monospace;
   --title-color: #DB00FF;
   --text-color-light: #F1B2CE;
   --text-color-dark: #000028;
@@ -13,4 +13,5 @@
   --font-size: 1.125rem;
   --content-section-title-color: #ff0070;
   --button-hover-color: rgba(255, 0, 112, 0.4);
+  --logo-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
 }
