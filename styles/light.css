@@ -20,20 +20,13 @@
     --content-section-title-color: #353430;
     --button-hover-color: rgba(50, 49, 45, 0.4);
   }
-  .theme-auto .header__title::before,
-  .theme-auto .footer__title::before,
-  .theme-auto .header__title::after,
-  .theme-auto .footer__title::after,
+
   .theme-auto .header__light-bulb,
   .theme-auto .header__light-bulb::after {
     display: none;
   }
 }
 
-.theme-light .header__title::before,
-.theme-light .footer__title::before,
-.theme-light .header__title::after,
-.theme-light .footer__title::after,
 .theme-light .header__light-bulb,
 .theme-light .header__light-bulb::after {
   display: none;
